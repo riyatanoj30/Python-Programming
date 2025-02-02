@@ -1,0 +1,53 @@
+'''Create a menu driven program to implement the following:
+a)	add a student
+b)	remove a student
+c)	print grades of a student
+d)	Print the menu
+e)	Exit
+Use dictionary, while loop and variations of if else'''
+
+def display_menu():
+    print("\nMenu:")
+    print("a) Add a student")
+    print("b) Remove a student")
+    print("c) Print grades of a student")
+    print("d) Print the menu")
+    print("e) Exit")
+
+def main():
+    students = {}
+    
+    while True:
+        display_menu()
+        choice = input("Choose an option: ").lower()
+        
+        if choice == "a":
+            name = input("Enter student name: ")
+            grade = input("Enter student grade: ")
+            students[name] = grade
+            print(f"Student {name} added.")
+        
+        elif choice == "b":
+            name = input("Enter student name to remove: ")
+            if name in students:
+                del students[name]
+                print(f"Student {name} removed.")
+            else:
+                print("Student not found.")
+        
+        elif choice == "c":
+            name = input("Enter student name to get grade: ")
+            print(f"Grade: {students.get(name, 'Student not found.')}")
+        
+        elif choice == "d":
+            display_menu()
+        
+        elif choice == "e":
+            print("Goodbye!")
+            break
+        
+        else:
+            print("Invalid choice, try again.")
+
+if __name__ == "__main__":
+    main()
